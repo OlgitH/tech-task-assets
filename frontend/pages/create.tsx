@@ -2,13 +2,16 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import Layout from "@/components/layout-main";
 import Person from "@/interfaces/person";
-import { getData } from "@/lib/helpers";
+import { addResource, getData } from "@/lib/helpers";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import CreateForm from "@/components/forms/create";
 
 export default function Home({
   people,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+
+
+
   return (
     <>
       <Head>

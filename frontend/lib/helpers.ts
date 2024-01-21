@@ -28,3 +28,26 @@ export async function getData(url: string) {
     }
     return; // return if arr falsy
   };
+
+
+  // post data to api
+  export async function addResource(data: Person) {
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    // add more header informations if needed...
+  
+    var requestOptions = {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(data),
+    };
+  
+    return await fetch(
+      process.env.API_URL + `/resources`,
+      requestOptions
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => json);
+  }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "@/styles/Form.module.css";
+import { FormEvent } from 'react'
 
 type Props = {};
 
@@ -15,7 +16,8 @@ export default function CreateForm({}: Props) {
 
   const [errorMessages, setErrorMessages] = useState("");
 
-  const validateForm = () => {
+  const submitHandler = (event: FormEvent) => {
+    event.preventDefault();
     setErrorMessages("");
 
     const { firstName, lastName, role, email, skills } = formData;
@@ -36,7 +38,8 @@ export default function CreateForm({}: Props) {
     }
 
     // If all validations pass, you can submit the form or perform other actions.
-    alert("Form submitted successfully!");
+    console.log('Form submitted');
+    
   };
 
   const validateEmail = (email) => {
@@ -59,8 +62,10 @@ export default function CreateForm({}: Props) {
       skills: updatedSkills,
     });
   };
+
+ 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={submitHandler}>
       <label htmlFor="firstName">First Name:</label>
       <input
         type="text"
@@ -122,7 +127,7 @@ export default function CreateForm({}: Props) {
         ))}
       </div>
 
-      <button type="button" onClick={validateForm}>
+      <button type="submit">
         Submit
       </button>
 
