@@ -1,5 +1,5 @@
 import Person from "@/interfaces/person";
-
+import Link from "next/link";
 type Props = {
   people: Person[] | undefined;
 };
@@ -11,7 +11,7 @@ export default function PeopleList({ people }: Props) {
         ? people.map((p: Person, i) => {
             return (
               <div className="person" key={`p-${i}`}>
-                {p.name}
+                <Link href={`/detail/${p.id}`}>{p.name}</Link>
               </div>
             );
           })
