@@ -2,16 +2,15 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import Layout from "@/components/layout-main";
 import Person from "@/interfaces/person";
-import { addResource, getData } from "@/lib/helpers";
+import Skill from "@/interfaces/skill";
+import { getData } from "@/lib/helpers";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import CreateForm from "@/components/forms/create";
 
 export default function Home({
   people,
+  allSkills,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-
-
-
   return (
     <>
       <Head>
@@ -22,7 +21,7 @@ export default function Home({
       </Head>
       <Layout people={people}>
         <h1>Create resource</h1>
-        <CreateForm />
+        <CreateForm allSkills={allSkills} />
       </Layout>
     </>
   );
@@ -32,5 +31,8 @@ export const getStaticProps = async () => {
   const people: Person[] | undefined = await getData(
     "http://localhost:4000/resources"
   );
-  return { props: { people } };
+  const allSkills: Skill[] | undefined = await getData(
+    "http://localhost:4000/skills"
+  );
+  return { props: { people, allSkills } };
 };

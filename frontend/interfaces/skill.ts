@@ -1,7 +1,6 @@
-type Skill = {
-    id: number
-    name: string
+interface Skill {
+  id: number;
+  name: string;
 }
-  
+
 export default Skill
-  

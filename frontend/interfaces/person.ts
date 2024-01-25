@@ -1,8 +1,8 @@
-type Person = {
-  id: number
-  name: string
-  role: string
-  email: string
+interface Person {
+  id: number;
+  name: string;
+  role: string;
+  email: string;
 }
 
 export default Person

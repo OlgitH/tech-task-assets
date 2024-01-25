@@ -1,5 +1,5 @@
 import Person from "../interfaces/person";
-
+import Skill from "@/interfaces/skill";
 export async function getData(url: string) {
   const res = await fetch(url);
   if (!res.ok) {
@@ -29,25 +29,41 @@ export async function getData(url: string) {
     return; // return if arr falsy
   };
 
+// post data to api
+interface ResourceData { 
+  firstname: string;
+  lastname: string; 
+  role: string; 
+  email: string; 
+  skills: Skill[]; 
+}
 
-  // post data to api
-  export async function addResource(data: Person) {
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    // add more header informations if needed...
-  
-    var requestOptions = {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(data),
-    };
-  
-    return await fetch(
-      process.env.API_URL + `/resources`,
+export async function addResource(data: ResourceData): Promise<any> {
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+
+  const requestOptions: RequestInit = {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(data),
+  };
+
+  try {
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + "/resources",
       requestOptions
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => json);
+    );
+
+    if (!response.ok) {
+      // If the response status is not okay, throw an error with the status text
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    const jsonData = await response.json();
+    return jsonData;
+  } catch (error) {
+    // Handle any network or parsing errors
+    console.error("Error adding resource:", error.message);
+    throw new Error("Failed to add resource");
   }
+}

@@ -10,7 +10,10 @@ import { useRouter } from "next/router";
 export default function Home({
   people,
   person,
+  skills,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  console.log(person);
+
   return (
     <>
       <Head>
@@ -21,11 +24,24 @@ export default function Home({
       <Layout people={people}>
         <h1>{person?.name}</h1>
         <h3>Overview</h3>
-        <p><span>Role:</span>{person?.role}</p>
-        <p><span>Email:</span>{person?.email}</p>
+        <p>
+          <span>Role:</span>
+          {person?.role}
+        </p>
+        <p>
+          <span>Email:</span>
+          {person?.email}
+        </p>
         <h3>Skills</h3>
-        <p><span>Role:</span>{person?.role}</p>
-        <p><span>Email:</span>{person?.email}</p>
+        {skills ? (
+          <ul>
+            {skills.map((skill, i) => (
+              <li key={`s-${i}`}>{skill.name}</li>
+            ))}
+          </ul>
+        ) : (
+          ""
+        )}
       </Layout>
     </>
   );

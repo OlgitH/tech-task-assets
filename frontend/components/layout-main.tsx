@@ -10,14 +10,13 @@ type Props = {
 };
 
 export default function Layout({ children, people }: Props) {
-  
   return (
     <>
       <Head>
-          <title>VF Resourcing</title>
-          <meta name="description" content="VF Resourcing" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.ico" />
+        <title>VF Resourcing</title>
+        <meta name="description" content="VF Resourcing" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={`${styles.wrapper} ${inter.className}`}>
         <Sidebar people={people} />

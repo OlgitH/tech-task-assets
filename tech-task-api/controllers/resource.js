@@ -41,8 +41,20 @@ exports.getResourceSkills = async (req, res, next) => {
 exports.postResource = async (req, res, next) => {
   const { firstname, lastname, role, email, skills } = req.body;
 
-  if (!firstname || !lastname || !role || !email || !skills || (skills && skills.length === 0)) {
-    res.status(400).json({ messsage: "firstname, lastname, role, email and skills are all required properties to create a new resource" });
+  if (
+    !firstname ||
+    !lastname ||
+    !role ||
+    !email ||
+    !skills ||
+    (skills && skills.length === 0)
+  ) {
+    res
+      .status(400)
+      .json({
+        messsage:
+          "firstname, lastname, role, email and skills are all required properties to create a new resource",
+      });
   } else {
     const fullSkills = [];
     skills.forEach((skill) => {
@@ -51,6 +63,7 @@ exports.postResource = async (req, res, next) => {
         fullSkills.push(fullSkill);
       }
     });
+    console.log("SERVER fullSkills: ", fullSkills);
 
     const resource = {
       id: crypto.randomUUID(),
