@@ -3,7 +3,7 @@ import styles from "@/styles/Form.module.css";
 import Skill from "@/interfaces/skill";
 import { addResource } from "@/lib/helpers";
 
-type Props = { allSkills: Skill[] | undefined };
+type Props = { allSkills: Skill[] | null };
 
 interface FormData {
   firstname: string;
@@ -83,70 +83,99 @@ export default function CreateForm({ allSkills }: Props) {
 
   return (
     <form className={styles.form} onSubmit={submitHandler}>
-      <label htmlFor="firstname">First Name:</label>
-      <input
-        type="text"
-        id="firstname"
-        name="firstname"
-        value={formData.firstname}
-        onChange={(e) =>
-          setFormData({ ...formData, firstname: e.target.value })
-        }
-        required
-      />
-
-      <label htmlFor="lastname">Last Name:</label>
-      <input
-        type="text"
-        id="lastname"
-        name="lastname"
-        value={formData.lastname}
-        onChange={(e) => setFormData({ ...formData, lastname: e.target.value })}
-        required
-      />
-
-      <label htmlFor="role">Role:</label>
-      <select
-        id="role"
-        name="role"
-        value={formData.role}
-        onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-        required
-      >
-        <option value="">Select Role</option>
-        <option value="developer">Developer</option>
-        <option value="designer">Designer</option>
-        <option value="manager">Manager</option>
-      </select>
-
-      <label>Email:</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        value={formData.email}
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        required
-      />
-
-      <label>Skills:</label>
       <div>
-        {allSkills
-          ? allSkills.map((skill, i) => (
-              <label key={`cb-${i}`}>
-                <input
-                  type="checkbox"
-                  name={skill.name}
-                  checked={formData.skills.some((s) => s.id === skill.id)}
-                  onChange={() => handleCheckboxChange(skill)}
-                />
-                {skill.name}
-              </label>
-            ))
-          : "Could not retrieve skills"}
+        <label htmlFor="firstname">
+          <span>First Name:</span>
+
+          <input
+            type="text"
+            id="firstname"
+            name="firstname"
+            value={formData.firstname}
+            onChange={(e) =>
+              setFormData({ ...formData, firstname: e.target.value })
+            }
+            required
+          />
+        </label>
+
+        <label htmlFor="lastname">
+          <span>Last Name:</span>
+
+          <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            value={formData.lastname}
+            onChange={(e) =>
+              setFormData({ ...formData, lastname: e.target.value })
+            }
+            required
+          />
+        </label>
       </div>
 
-      <button type="submit">Submit</button>
+      <div>
+        <label htmlFor="role">
+          <span>Role:</span>
+
+          <input
+            type="text"
+            id="role"
+            name="role"
+            value={formData.role}
+            onChange={(e) =>
+              setFormData({ ...formData, lastname: e.target.value })
+            }
+            required
+          />
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <span>Email:</span>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+            required
+          />
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <span>Skills:</span>
+
+          <div>
+            {allSkills
+              ? allSkills.map((skill, i) => (
+                  <label key={`cb-${i}`}>
+                    <input
+                      type="checkbox"
+                      name={skill.name}
+                      checked={formData.skills.some((s) => s.id === skill.id)}
+                      onChange={() => handleCheckboxChange(skill)}
+                    />
+                    {skill.name}
+                  </label>
+                ))
+              : "Could not retrieve skills"}
+          </div>
+        </label>
+      </div>
+
+      <div>
+        <button type="submit" className="bg-lightpurple text-purple">
+          Save
+        </button>
+      </div>
 
       {errorMessages && <div style={{ color: "#f00" }}>{errorMessages}</div>}
     </form>

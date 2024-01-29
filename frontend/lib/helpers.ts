@@ -3,13 +3,13 @@ import Skill from "@/interfaces/skill";
 export async function getData(url: string) {
   const res = await fetch(url);
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    return null
   }
   return res.json();
 }
 
 // function that manages the display order
-  export const sortByName = (arr: Array<Person> | undefined, reverse: boolean = false) => {
+  export const sortByName = (arr: Person[] | null, reverse: boolean = false) => {
     if (arr) {
       const sortedArray = [...arr].sort((a, b) => {
             const nameA = a.name.toLowerCase();

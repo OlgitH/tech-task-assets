@@ -20,7 +20,9 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout people={people}>
-        <h1>Create resource</h1>
+        <header>
+          <h1>Create resource</h1>
+        </header>
         <CreateForm allSkills={allSkills} />
       </Layout>
     </>
@@ -28,10 +30,10 @@ export default function Home({
 }
 
 export const getStaticProps = async () => {
-  const people: Person[] | undefined = await getData(
+  const people: Person[] | null = await getData(
     "http://localhost:4000/resources"
   );
-  const allSkills: Skill[] | undefined = await getData(
+  const allSkills: Skill[] | null = await getData(
     "http://localhost:4000/skills"
   );
   return { props: { people, allSkills } };

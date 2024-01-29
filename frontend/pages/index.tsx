@@ -16,13 +16,13 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout people={people}>Hello</Layout>
+      <Layout people={people}></Layout>
     </>
   );
 }
 
 export const getStaticProps = async () => {
-  const people: Person[] | undefined = await getData(
+  const people: Person[] | null = await getData(
     "http://localhost:4000/resources"
   );
   return { props: { people } };

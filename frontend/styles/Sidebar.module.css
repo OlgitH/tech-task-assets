@@ -1,6 +1,63 @@
 .sidebar {
   display: flex;
-  background-color:#e9e9e9;
-  padding: 1rem;
-    flex-basis: calc((100vw / 5) * 1);
+  flex-direction: column;
+  padding: 2rem;
+  flex-basis: calc((100vw / 5) * 1);
+  gap: 1rem;
+  background-color: var(--light-grey);
+}
+.logo {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-bottom: 1px solid #ccc;
+  padding: 0 0 1rem 0;
+}
+.logo a {
+  display:flex;
+}
+.logo span {
+  display: flex;
+  padding: 0.6em 0.4rem;
+}
+.logo span:first-of-type {
+  display: block;
+  color:#fff;
+  background-color: var(--purple);
+  border-radius: 4px;
+}
+
+.people_list {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+.sidebar footer button {
+  padding:0.6rem 0.8rem;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  background-color: var(--purple);
+  color: var(--white);
+}
+
+.person {
+  padding-bottom: 1rem;
+}
+
+.filter {
+  display:flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 0 0 1rem 0;
+}
+.filter button {
+  padding: 0.4rem;
+  cursor: pointer;
+  background-color: var(--lightpurple);
+  color: var(--purple)
+}
+.filter button:first-of-type {
+  margin-right: 1rem;
 }

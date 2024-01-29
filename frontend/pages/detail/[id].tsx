@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/Detail.module.css";
 import Layout from "@/components/layout-main";
 import Person from "@/interfaces/person";
 import Skill from "@/interfaces/skill";
@@ -12,7 +12,18 @@ export default function Home({
   person,
   skills,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(person);
+  // console.log(person);
+
+  function getInitials(fullname: string | undefined) {
+    if (fullname) {
+      const words = fullname.split(" ");
+      const initials = words
+        .map((word) => word.charAt(0).toUpperCase())
+        .join("");
+      return initials;
+    }
+    return;
+  }
 
   return (
     <>
@@ -22,7 +33,10 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Layout people={people}>
-        <h1>{person?.name}</h1>
+        <h1 className={styles.initials}>
+          <span>{getInitials(person?.name)}</span>
+          {person?.name}
+        </h1>
         <h3>Overview</h3>
         <p>
           <span>Role:</span>
@@ -64,18 +78,20 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export async function getStaticPaths() {
-  const people: Person[] | undefined = await getData(
+  const people: Person[] | null = await getData(
     "http://localhost:4000/resources"
   );
 
   return {
-    paths: people.map((person) => {
-      return {
-        params: {
-          id: person.id,
-        },
-      };
-    }),
+    paths: people
+      ? people.map((person) => {
+          return {
+            params: {
+              id: person.id,
+            },
+          };
+        })
+      : null,
     fallback: false,
   };
 }

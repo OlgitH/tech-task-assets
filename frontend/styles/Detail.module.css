@@ -1,0 +1,9 @@
+.initials span {
+    border-radius: 50%;
+    background-color: var(--light-grey);
+    height:40px;
+    width:40px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
