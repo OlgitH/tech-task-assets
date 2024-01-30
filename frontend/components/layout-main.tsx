@@ -3,7 +3,7 @@ import styles from "@/styles/Layout.module.css";
 import Person from "@/interfaces/person";
 import Head from "next/head";
 type Props = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   people: Person[] | null;
 };
 
@@ -18,7 +18,7 @@ export default function Layout({ children, people }: Props) {
       </Head>
       <div className={`${styles.wrapper}`}>
         <Sidebar people={people} />
-        <main className={styles.main}>{children}</main>
+        <main className={styles.main}>{children && children}</main>
       </div>
     </>
   );

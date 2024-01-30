@@ -87,7 +87,7 @@ export default function Home({
   );
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: { params: any }) => {
   const people: Person[] | null = await getData(
     `http://localhost:4000/resources`
   );
