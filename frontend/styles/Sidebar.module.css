@@ -43,21 +43,28 @@
 }
 
 .person {
-  padding-bottom: 1rem;
 }
+.person a {
+  display:block;
+  padding: 0.66rem 0.4rem;
+}
+
 
 .filter {
   display:flex;
   justify-content: space-between;
   border-bottom: 1px solid #ccc;
-  padding: 0 0 1rem 0;
+  padding: 0.66rem 0.4rem;
 }
 .filter button {
   padding: 0.4rem;
   cursor: pointer;
-  background-color: var(--lightpurple);
   color: var(--purple)
 }
+.filter button.active {
+  background-color: var(--lightpurple);
+}
+
 .filter button:first-of-type {
   margin-right: 1rem;
 }

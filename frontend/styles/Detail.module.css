@@ -1,3 +1,12 @@
+.initials {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
 .initials span {
     border-radius: 50%;
     background-color: var(--light-grey);
@@ -6,4 +15,25 @@
     display:flex;
     justify-content: center;
     align-items: center;
+}
+
+.detailHeader {
+    display:flex;
+    gap: 1rem;
+}
+
+.detail {
+    @media screen and (min-width: 1024px){
+        padding-left: calc(40px + 1rem);
+    }
+}
+
+.overviewItem {
+    margin-bottom:1rem;
+    font-size: 1rem;
+}
+.overviewItem span {
+    display:block;
+    margin-bottom: 0.44rem;
+    font-size: 0.94rem;
 }

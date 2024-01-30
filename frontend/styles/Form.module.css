@@ -16,8 +16,9 @@
     box-sizing: border-box;
 }
 .form input[type=text], .form input[type=email]{
-    border-color:var(--border);
-    border-width: 1px 1px 1px 1px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px;
     outline:0;
     height:1.8rem;
 }

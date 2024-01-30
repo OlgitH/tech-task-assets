@@ -28,7 +28,13 @@ a {
 button, .rounded {
   outline: 0;
   border: none;
+  padding: 0.4rem;
+  cursor: pointer;
+  color: var(--purple);
   border-radius: 4px;
+}
+button.active {
+  background-color: var(--lightpurple);
 }
 
 html {
@@ -36,4 +42,15 @@ html {
   font-family: Arial, Helvetica, sans-serif
 }
 
+ul {
+  padding-left:15px;
+}
+ul li {
+  padding-bottom:0.6rem;
+}
 
+a.active {
+  background-color: var(--lightpurple);
+  display:block;
+  border-radius: 4px;
+}
