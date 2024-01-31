@@ -8,7 +8,7 @@ import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function Home({
+export default function DetailPage({
   people,
   person,
   skills,

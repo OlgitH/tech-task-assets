@@ -7,7 +7,7 @@ import { getData } from "@/lib/helpers";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import CreateForm from "@/components/forms/create";
 
-export default function Home({
+export default function Create({
   people,
   allSkills,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
